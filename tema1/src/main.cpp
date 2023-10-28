@@ -3,6 +3,10 @@
 
 using std::cout;
 
+String ret(String a){
+  return a;
+}
+
 int main(){
   char name[] = "Claudiu", name2[] = "Andrei", name3[] = "Miruna";
   String s_name = String(name);
@@ -13,5 +17,7 @@ int main(){
 
   s_name4.append(name3);
   s_name4.append(s_name);
+
+  String s_name5 = ret(String(name));
 
 }
