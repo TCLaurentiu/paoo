@@ -20,3 +20,13 @@ String::~String(){
 
   delete[] this->c_string;
 }
+
+String::String(const String& other){
+
+  cout << other.c_string << " copy constructor called \n";
+
+  this->size = other.size;
+  this->capacity = other.capacity;
+  this->c_string = new char[this->size + 1];
+  strcpy(this->c_string, other.c_string);
+}
