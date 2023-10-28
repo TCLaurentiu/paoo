@@ -48,3 +48,15 @@ void String::resize(int new_size){
   delete[] c_string;
   this->c_string = new_c_string;
 }
+
+char *String::getString(){
+  return this->c_string;
+}
+
+void String::setString(const char *c_string){
+  int len = strlen(c_string);
+  if(len > this->capacity){
+    this->resize(len);
+  }
+  strcpy(this->c_string, c_string);
+}
