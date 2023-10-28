@@ -1,5 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(classes)
+project(my_string)
 
-add_executable(tema main.cpp)
+add_subdirectory(string)
+include_directories(string)
+
+add_executable(my_string main.cpp)
+
+target_link_libraries(my_string string)
