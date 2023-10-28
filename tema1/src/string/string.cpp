@@ -41,3 +41,10 @@ String::String(String&& other){
   
   other.c_string = nullptr;
 }
+
+void String::resize(int new_size){
+  char *new_c_string = new char[new_size + 1];
+  strcpy(new_c_string, this->c_string);
+  delete[] c_string;
+  this->c_string = new_c_string;
+}
