@@ -13,3 +13,10 @@ String::String(char *c_string){
   this->c_string = new char[this->size + 1];
   strcpy(this->c_string, c_string);
 }
+
+String::~String(){
+
+  cout << c_string << " destructor called \n";
+
+  delete[] this->c_string;
+}
