@@ -3,6 +3,7 @@ class String{
     int size;
     int capacity;
     char *c_string;
+    void resize(int new_size);
   public:
     String(char *c_string);
     ~String();
@@ -12,7 +13,6 @@ class String{
     void setString(const char *c_string);
     char *getString();
 
-    void resize(int new_size);
     void append(const char *c_string);
     void append(const String other);
 
