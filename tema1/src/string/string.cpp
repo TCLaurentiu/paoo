@@ -60,3 +60,15 @@ void String::setString(const char *c_string){
   }
   strcpy(this->c_string, c_string);
 }
+
+void String::append(const char *c_string){
+  int len = strlen(c_string);
+  if(this->size + len > this->capacity){
+    this->resize(this->size + len);
+  }
+  strcat(this->c_string, c_string);
+}
+
+void String::append(const String other){
+  this->append(other.c_string);
+}
