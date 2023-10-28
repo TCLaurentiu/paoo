@@ -30,3 +30,14 @@ String::String(const String& other){
   this->c_string = new char[this->size + 1];
   strcpy(this->c_string, other.c_string);
 }
+
+String::String(String&& other){
+
+  cout << other.c_string << " move constructor called \n";
+
+  this->size = other.size;
+  this->capacity = other.capacity;
+  this->c_string = other.c_string;
+  
+  other.c_string = nullptr;
+}
