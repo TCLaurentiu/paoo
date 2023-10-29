@@ -4,7 +4,7 @@
 
 using std::cout;
 
-String::String(char *c_string){
+String::String(const char *c_string){
 
   cout << c_string << " constructor called \n";
 
@@ -69,6 +69,6 @@ void String::append(const char *c_string){
   strcat(this->c_string, c_string);
 }
 
-void String::append(const String other){
+void String::append(const String& other){
   this->append(other.c_string);
 }

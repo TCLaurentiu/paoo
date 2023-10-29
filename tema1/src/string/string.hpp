@@ -14,6 +14,6 @@ class String{
     char *getString();
 
     void append(const char *c_string);
-    void append(const String other);
+    void append(const String& other);
 
 };
