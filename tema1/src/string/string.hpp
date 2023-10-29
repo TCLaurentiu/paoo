@@ -5,7 +5,7 @@ class String{
     char *c_string;
     void resize(int new_size);
   public:
-    String(char *c_string);
+    String(const char *c_string);
     ~String();
     String(const String& other);
     String(String&& other);
