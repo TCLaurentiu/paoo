@@ -16,8 +16,12 @@ String::String(const char *c_string){
 
 String::~String(){
 
-  cout << c_string << " destructor called \n";
+  if(this->c_string == nullptr){
+    cout << "Destructor of moved object called \n";
+    return;
+  }
 
+  cout << c_string << " destructor called \n";
   delete[] this->c_string;
 }
 
