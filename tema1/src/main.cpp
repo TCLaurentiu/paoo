@@ -8,16 +8,15 @@ String ret(String a){
 }
 
 int main(){
-  char name[] = "Claudiu", name2[] = "Andrei", name3[] = "Miruna";
-  String s_name = String(name);
-  String s_name2 = String(s_name); 
-  String s_name3 = String(name2);
+  String s_name("Claudiu");
+  String s_name2(s_name); 
+  String s_name3("Miruna");
   
-  String s_name4 = std::move(s_name3);
+  String s_name4(std::move(s_name3));
 
-  s_name4.append(name3);
+  s_name4.append("Andrei");
   s_name4.append(s_name);
 
-  String s_name5 = ret(String(name));
+  String s_name5(ret(String("Eustachio")));
 
 }
