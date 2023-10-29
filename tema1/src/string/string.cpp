@@ -44,6 +44,9 @@ String::String(String&& other){
   this->c_string = other.c_string;
   
   other.c_string = nullptr;
+  other.capacity = 0;
+  other.size = 0;
+
 }
 
 void String::resize(int new_size){
