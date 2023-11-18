@@ -44,6 +44,7 @@ String::String(String&& other){
 
   this->size = other.size;
   this->capacity = other.capacity;
+  delete[] this->c_string;
   this->c_string = other.c_string;
   
   other.c_string = nullptr;
@@ -75,6 +76,7 @@ String& String::operator=(String&& other){
   if (this != &other){
     this->size = other.size;
     this->capacity = other.capacity;
+    delete[] this->c_string;
     this->c_string = other.c_string;
 
     other.size = 0;
