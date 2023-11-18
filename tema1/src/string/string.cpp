@@ -4,6 +4,8 @@
 
 using std::cout;
 
+using MyString::String;
+
 String::String(const char *c_string){
 
   cout << c_string << " constructor called \n";
@@ -56,7 +58,7 @@ void String::resize(int new_size){
   this->c_string = new_c_string;
 }
 
-char *String::getString(){
+char *String::to_c_string() const{
   return this->c_string;
 }
 
