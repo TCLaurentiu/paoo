@@ -78,6 +78,14 @@ void String::append(const char *c_string){
   strcat(this->c_string, c_string);
 }
 
-void String::append(const String& other){
-  this->append(other.c_string);
+void String::append(const char character){
+  if(this->size + 1 > this -> capacity){
+    this->resize(this->size + 1);
+  }
+  this->c_string[this->size - 1] = character;
+  this->c_string[this->size] = '\0';
+}
+
+void String::append(const IString& other){
+  this->append(((String&)other).c_string);
 }
