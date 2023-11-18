@@ -51,6 +51,40 @@ String::String(String&& other){
 
 }
 
+String& String::operator=(const String& other){
+  
+  cout << other.c_string << " copy assignment called \n";
+
+  if (this != &other){
+    this->size = other.size;
+    this->capacity = other.capacity;
+    this->c_string = new char[this->size + 1];
+    strcpy(this->c_string, other.c_string);
+  }
+
+  return *this;
+
+}
+
+String& String::operator=(String&& other){
+  
+  cout << other.c_string << " move assignment called \n";
+
+  if (this != &other){
+    this->size = other.size;
+    this->capacity = other.capacity;
+    this->c_string = other.c_string;
+
+    other.size = 0;
+    other.capacity = 0;
+    other.c_string = nullptr;
+
+  }
+
+  return *this;
+
+}
+
 void String::resize(int new_size){
   char *new_c_string = new char[new_size + 1];
   strcpy(new_c_string, this->c_string);

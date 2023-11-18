@@ -17,6 +17,8 @@ namespace MyString
     ~String();
     String(const String &other);
     String(String &&other);
+    String& operator=(const String& other);
+    String& operator=(String&& other);
 
     void setString(const char *c_string);
     char *to_c_string() const;
