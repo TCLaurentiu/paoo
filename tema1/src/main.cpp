@@ -10,6 +10,8 @@ String ret(String a){
 
 int main(){
   String s_name("Claudiu");
-  String s_name2(s_name);
+  String s_name2("Mircea");
+
+  s_name2 = s_name;
 
 }
