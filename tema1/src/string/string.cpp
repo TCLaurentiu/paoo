@@ -33,7 +33,6 @@ String::String(const String& other){
 
   this->size = other.size;
   this->capacity = other.capacity;
-  delete[] this->c_string;
   this->c_string = new char[this->size + 1];
   strcpy(this->c_string, other.c_string);
 }
@@ -44,7 +43,6 @@ String::String(String&& other){
 
   this->size = other.size;
   this->capacity = other.capacity;
-  delete[] this->c_string;
   this->c_string = other.c_string;
   
   other.c_string = nullptr;
