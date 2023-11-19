@@ -6,7 +6,7 @@ namespace MyString
 
   class String : public IString
   {
-  private:
+  protected:
     int size;
     int capacity;
     char *c_string;
