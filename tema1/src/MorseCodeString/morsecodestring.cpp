@@ -132,6 +132,10 @@ char MorseCodeString::MorseCodeCharacterToAlpha(const char* string){
 
 }
 
+String MorseCodeString::ToAlphaNumerical(){
+  return this->AlphaNumerical;
+}
+
 void MorseCodeString::setString(const char *c_string){
 
   this->AlphaNumerical = MorseCodeString::MorseCodeToAlpha(c_string);
