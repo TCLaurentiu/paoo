@@ -9,8 +9,9 @@ project(my_string)
 
 add_subdirectory(string)
 add_subdirectory(MorseCodeString)
-include_directories(string MorseCodeString)
+add_subdirectory(checksumstring)
+include_directories(string MorseCodeString ChecksumString)
 
 add_executable(my_string main.cpp)
 
-target_link_libraries(my_string string morsecodestring)
+target_link_libraries(my_string string morsecodestring checksumstring)
