@@ -1,10 +1,12 @@
 #include <iostream>
 #include "string.hpp"
 #include "morsecodestring.hpp"
+#include "checksumstring.hpp"
 
 using std::cout;
 using MyString::String;
 using MyString::MorseCodeString;
+using MyString::ChecksumString;
 
 int main(){
   String s1("Claudiu");
@@ -43,6 +45,11 @@ int main(){
   base = &mcs1;
   base->append("..-");
   cout << base->to_c_string() << "\n";
+
+  cout << "\n ---- \n\n";
+
+  ChecksumString cs1("Lionel");
+  cout << cs1.getChecksum() << "\n";
 
   cout << "\n ---- \n\n";
 
