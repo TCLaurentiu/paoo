@@ -113,10 +113,11 @@ char *String::to_c_string() const{
 
 void String::setString(const char *c_string){
   int len = strlen(c_string);
-  if(len > this->capacity){
-    this->resize(len);
+  if(len + 1> this->capacity){
+    this->resize(len + 1);
   }
   strcpy(this->c_string, c_string);
+  this->size = len + 1;
 }
 
 void String::append(const char *c_string){
