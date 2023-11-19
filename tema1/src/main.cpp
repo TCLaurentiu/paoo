@@ -20,7 +20,7 @@ int main(){
   cout << s1.to_c_string() << " " << s2.to_c_string() << " " << s3.to_c_string() << "\n";
   cout << "\n";
 
-  cout << "\n ---- \n";
+  cout << "\n ---- \n\n";
   MorseCodeString mcs1("-.-. .-.. .- ..- -.. .. ..-");
   MorseCodeString mcs2(MorseCodeString(".- -. .-"));
   MorseCodeString mcs3(mcs2);
@@ -37,5 +37,15 @@ int main(){
   cout << mcs3.to_c_string() << " = " << s5.to_c_string() << "\n";
   cout << "\n";
 
+  cout << "\n ---- \n\n";
+
+  String *base;
+  base = &mcs1;
+  base->append("..-");
+  cout << base->to_c_string() << "\n";
+
+  cout << "\n ---- \n\n";
+
+  return 0;
 
 }
