@@ -95,9 +95,14 @@ String& String::operator=(String&& other){
 
 }
 
-void String::resize(int new_size){
-  char *new_c_string = new char[new_size + 1];
+void String::resize(int new_capacity){
+  if(this->c_string == NULL){
+    this->c_string = new char[new_capacity];
+    return;
+  }
+  char *new_c_string = new char[new_capacity];
   strcpy(new_c_string, this->c_string);
+  this->capacity = new_capacity;
   delete[] c_string;
   this->c_string = new_c_string;
 }
