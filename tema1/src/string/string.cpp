@@ -107,6 +107,18 @@ void String::resize(int new_capacity){
   this->c_string = new_c_string;
 }
 
+bool String::operator==(const String& other) const{
+  if ((this->c_string == NULL && other.c_string != NULL) || (this->c_string != NULL && other.c_string == NULL)){
+    return false;
+  }
+
+  if (this->c_string == NULL && other.c_string == NULL){
+    return true;
+  }
+
+  return strcmp(this->c_string, other.c_string) == 0;
+}
+
 char *String::to_c_string() const{
   return this->c_string;
 }
