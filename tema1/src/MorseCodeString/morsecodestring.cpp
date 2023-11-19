@@ -37,6 +37,30 @@ const char* MorseCodeString::morse_specials[3] = {
   "..--..",
 };
 
+MorseCodeString::MorseCodeString(const char *string) : String(string){
+  this->setString(string);
+}
+
+MorseCodeString::MorseCodeString(const MorseCodeString& other) : String(other){
+  this->AlphaNumerical = other.AlphaNumerical;
+}
+
+MorseCodeString::MorseCodeString(MorseCodeString&& other) : String(std::move(other)){
+  this->AlphaNumerical = std::move(other.AlphaNumerical);
+}
+
+MorseCodeString& MorseCodeString::operator=(const MorseCodeString& other){
+  String::operator=(other);
+  this->AlphaNumerical = other.AlphaNumerical;
+  return *this;
+}
+
+MorseCodeString& MorseCodeString::operator=(MorseCodeString&& other){
+  String::operator=(std::move(other));
+  this->AlphaNumerical = std::move(other.AlphaNumerical);
+  return *this;
+}
+
 String MorseCodeString::MorseCodeToAlpha(const char* string){
 
   String alpha_string;
@@ -106,4 +130,12 @@ char MorseCodeString::MorseCodeCharacterToAlpha(const char* string){
 
   return -1;
 
+}
+
+void MorseCodeString::setString(const char *c_string){
+
+  this->AlphaNumerical = MorseCodeString::MorseCodeToAlpha(c_string);
+  if(this->AlphaNumerical == String()){
+    throw std::invalid_argument("MorseCodeString constructor expects a valid Morse Code String");
+  }
 }
