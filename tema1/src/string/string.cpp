@@ -15,6 +15,15 @@ String::String(const char *c_string){
   strcpy(this->c_string, c_string);
 }
 
+String::String(){
+  cout << "default constructor called \n";
+
+  this->size = 0;
+  this->capacity = 0;
+  this->c_string = NULL;
+
+}
+
 String::~String(){
 
   if(this->c_string == nullptr){
