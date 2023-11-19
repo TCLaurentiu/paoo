@@ -126,14 +126,26 @@ void String::append(const char *c_string){
     this->resize(this->size + len);
   }
   strcat(this->c_string, c_string);
+  this->size += len;
 }
 
 void String::append(const char character){
+
+  if(this->c_string == NULL){
+    this->resize(2);
+    this->size = 2;
+    this->c_string[0] = character;
+    this->c_string[1] = '\0';
+    return;
+  }
+
   if(this->size + 1 > this -> capacity){
     this->resize(this->size + 1);
   }
+
   this->c_string[this->size - 1] = character;
   this->c_string[this->size] = '\0';
+  this->size ++;
 }
 
 void String::append(const IString& other){
