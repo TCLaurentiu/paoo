@@ -20,4 +20,22 @@ int main(){
   cout << s1.to_c_string() << " " << s2.to_c_string() << " " << s3.to_c_string() << "\n";
   cout << "\n";
 
+  cout << "\n ---- \n";
+  MorseCodeString mcs1("-.-. .-.. .- ..- -.. .. ..-");
+  MorseCodeString mcs2(MorseCodeString(".- -. .-"));
+  MorseCodeString mcs3(mcs2);
+  mcs3 = MorseCodeString("-.-. .-.. .- ..- -.. .. ..-");
+  mcs3 = mcs2;
+
+  mcs3.append("-. .-");
+  mcs3.append(mcs2);
+
+  String s4 = mcs1.ToAlphaNumerical();
+  String s5 = mcs3.ToAlphaNumerical();
+  cout << "\n";
+  cout << mcs1.to_c_string() << " = " << s4.to_c_string() << "\n";
+  cout << mcs3.to_c_string() << " = " << s5.to_c_string() << "\n";
+  cout << "\n";
+
+
 }
