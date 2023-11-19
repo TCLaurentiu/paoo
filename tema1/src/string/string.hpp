@@ -15,7 +15,7 @@ namespace MyString
   public:
     String();
     String(const char *c_string);
-    ~String();
+    virtual ~String();
     String(const String &other);
     String(String &&other);
     String& operator=(const String& other);
