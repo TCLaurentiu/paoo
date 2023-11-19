@@ -37,6 +37,48 @@ const char* MorseCodeString::morse_specials[3] = {
   "..--..",
 };
 
+String MorseCodeString::MorseCodeToAlpha(const char* string){
+
+  String alpha_string;
+  
+  char converted_character;
+
+  size_t len = strlen(string);
+
+  char *aux = new char[MaxMorseCharacterLength + 1];
+  size_t current_character_len = 0;
+
+  for(size_t i = 0;i<len;i++){
+    if(string[i] == ' '){
+      aux[current_character_len] = '\0';
+      converted_character = MorseCodeString::MorseCodeCharacterToAlpha(aux);
+      if(converted_character == -1){
+        return String();
+      }
+
+      alpha_string.append(converted_character);
+      current_character_len = 0;
+    } else {
+      if (current_character_len + 1 > MaxMorseCharacterLength){
+        return String();
+      }
+      aux[current_character_len++] = string[i];
+    }
+  }
+
+  aux[current_character_len] = '\0';
+  converted_character = MorseCodeString::MorseCodeCharacterToAlpha(aux);
+  if (converted_character == -1){
+    return String();
+  }
+  alpha_string.append(converted_character);
+  
+  delete[] aux;
+
+  return alpha_string;
+
+}
+
 char MorseCodeString::MorseCodeCharacterToAlpha(const char* string){
   int len = strlen(string);
 
