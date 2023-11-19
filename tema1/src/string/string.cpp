@@ -9,10 +9,9 @@ using MyString::String;
 String::String(const char *c_string){
 
   cout << c_string << " constructor called \n";
-
-  this->size = strlen(c_string);
+  this->size = strlen(c_string) + 1;
   this->capacity = this->size;
-  this->c_string = new char[this->size + 1];
+  this->c_string = new char[this->capacity];
   strcpy(this->c_string, c_string);
 }
 
