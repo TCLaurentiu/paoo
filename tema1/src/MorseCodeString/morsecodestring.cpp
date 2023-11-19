@@ -139,3 +139,17 @@ void MorseCodeString::setString(const char *c_string){
     throw std::invalid_argument("MorseCodeString constructor expects a valid Morse Code String");
   }
 }
+
+void MorseCodeString::append(const char *c_string){
+  String alphaString = MorseCodeString::MorseCodeToAlpha(c_string);
+  if(alphaString == String()){
+    throw std::invalid_argument("Append function expects a valid Morse Code String");
+  }
+  String::append(" ");
+  String::append(c_string);
+  this->AlphaNumerical.append(alphaString);
+}
+
+void MorseCodeString::append(const IString& string){
+  this->append(string.to_c_string());
+}
