@@ -150,6 +150,10 @@ void MorseCodeString::append(const char *c_string){
   this->AlphaNumerical.append(alphaString);
 }
 
+void MorseCodeString::append(const char character){
+  throw std::invalid_argument("Can't append character to Morse Code String");
+}
+
 void MorseCodeString::append(const IString& string){
   this->append(string.to_c_string());
 }
