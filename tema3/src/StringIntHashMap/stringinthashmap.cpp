@@ -16,7 +16,7 @@ std::optional<int> StringIntHashMap::get(std::string key) {
 
 void StringIntHashMap::insert_reorder(std::pair<std::string, int> element){
   unsigned int hashcode = this->getHash(element.first);
-  unsigned int old = this->buckets[hashcode].remove(element.first).value();
+  this->buckets[hashcode].remove(element.first);
   this->buckets[hashcode].insert_front(element);
 }
 
