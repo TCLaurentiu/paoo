@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <utility>
+#include <optional>
 #include "linkedlist.hpp"
 
 /*
@@ -15,7 +16,7 @@ class StringIntHashMap{
     StringIntHashMap(int);
     void insert_reorder(std::pair<std::string, int>);
     bool exists(std::string key);
-    int get(std::string key);
+    std::optional<int> get(std::string key);
 
     int size;
     unsigned int getHash(std::string);

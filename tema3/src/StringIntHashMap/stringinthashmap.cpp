@@ -9,6 +9,11 @@ StringIntHashMap::StringIntHashMap(int size) {
   this -> buckets = std::vector<LinkedList>(this->size, LinkedList());
 }
 
+std::optional<int> StringIntHashMap::get(std::string key) {
+  unsigned int hashcode = this->getHash(key);
+  return this->buckets[hashcode].get_second(key);
+}
+
 void StringIntHashMap::insert_reorder(std::pair<std::string, int> element){
   unsigned int hashcode = this->getHash(element.first);
   unsigned int old = this->buckets[hashcode].remove(element.first).value();
