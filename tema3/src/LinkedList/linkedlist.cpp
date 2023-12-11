@@ -10,6 +10,17 @@ LinkedList::LinkedList() {
   this->head = nullptr;
 }
 
+std::optional<int> LinkedList::get_second(std::string string){
+  std::shared_ptr<Node> iter = this -> head;
+  while (iter != NULL){
+    if (iter->element.first == string){
+      return iter->element.second;
+    }
+    iter = iter->next;
+  }
+  return {};
+}
+
 void LinkedList::insert_front(std::pair<std::string, int> element) {
   std::shared_ptr<Node> new_node = std::make_shared<Node>(element);
   new_node -> next = this -> head;

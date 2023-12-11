@@ -16,6 +16,7 @@ typedef struct LinkedList {
     LinkedList();
     // insert the pair at the front of the linkedlist
     void insert_front(std::pair<std::string, int>);
+    std::optional<int> get_second(std::string); 
 
     // find the pair containing string, remove it from the list, and return its corresponding int
     std::optional<int> remove(std::string string);
