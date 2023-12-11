@@ -18,4 +18,10 @@ typedef struct LinkedList {
     // find the pair containing string, remove it from the list, and return its corresponding int
     std::optional<int> remove(std::string string);
 
+    void print();
+
+  private:
+    std::shared_ptr<Node> head;
+
+
 } LinkedList;
