@@ -8,6 +8,12 @@ StringIntHashMap::StringIntHashMap(int size) {
   this -> buckets = std::vector<LinkedList>(this->size, LinkedList());
 }
 
+void StringIntHashMap::insert_reorder(std::pair<std::string, int> element){
+  unsigned int hashcode = this->getHash(element.first);
+  unsigned int old = this->buckets[hashcode].remove(element.first).value();
+  this->buckets[hashcode].insert_front(element);
+}
+
 /*
 interprets every 4 bytes of the string as a number
 adds them up and applies modulo the size of the hashmap
