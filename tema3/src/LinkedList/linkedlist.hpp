@@ -4,11 +4,14 @@
 #include <memory>
 #include <optional>
 
-typedef struct LinkedList {
+typedef struct Node {
   std::pair<std::string, int> element;
-  std::shared_ptr<LinkedList> next;
+  std::shared_ptr<Node> next;
+} Node;
 
+typedef struct LinkedList {
   public:
+    LinkedList();
     // insert the pair at the front of the linkedlist
     void insert_front(std::pair<std::string, int>);
 
