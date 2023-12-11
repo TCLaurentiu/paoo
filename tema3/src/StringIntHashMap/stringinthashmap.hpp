@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <utility>
 
 /*
 a hashmap that has strings as keys and ints as values
@@ -11,7 +12,7 @@ on access elements are moved to the beginning of the list
 class StringIntHashMap{
   public:
     StringIntHashMap(int);
-    void insert(std::string key, int);
+    void insert(std::pair<std::string, int>);
     bool exists(std::string key);
     int get(std::string key);
 
