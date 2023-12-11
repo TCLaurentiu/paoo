@@ -41,4 +41,14 @@ void count_frequencies(int thread_index) {
 
 int main()
 {
+  std::vector<std::thread> threads(processor_count);
+
+  for (int i =0;i<processor_count;i++){
+    threads[i] = std::thread(count_frequencies, i);
+  }
+
+  for (int i = 0;i<processor_count;i++){
+    threads[i].join();
+  }
+
 }
