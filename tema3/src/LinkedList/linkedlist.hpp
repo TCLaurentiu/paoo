@@ -3,6 +3,7 @@
 #include <string>
 #include <memory>
 #include <optional>
+#include <vector>
 
 typedef struct Node {
   std::pair<std::string, int> element;
