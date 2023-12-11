@@ -5,8 +5,12 @@
 #include <optional>
 
 typedef struct Node {
-  std::pair<std::string, int> element;
-  std::shared_ptr<Node> next;
+  private:
+    std::pair<std::string, int> element;
+    std::shared_ptr<Node> next;
+
+  Node(std::pair<std::string, int>);
+
 } Node;
 
 typedef struct LinkedList {
