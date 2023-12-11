@@ -1,4 +1,5 @@
 #include "stringinthashmap.hpp"
+#include <iostream>
 
 #define p 31
 #define m = 1e9 + 9
@@ -36,4 +37,11 @@ unsigned int StringIntHashMap::getHash(std::string string){
 
   return sum % this -> size;
 
+}
+
+void StringIntHashMap::print() {
+  for (int i = 0;i<this->size;i++){
+    std::cout << "Bucket " << i << ":\n";
+    this->buckets[i].print();
+  }
 }

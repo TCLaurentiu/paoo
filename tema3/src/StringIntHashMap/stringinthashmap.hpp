@@ -19,6 +19,7 @@ class StringIntHashMap{
 
     int size;
     unsigned int getHash(std::string);
+    void print();
   
   private:
     std::vector<LinkedList> buckets;
