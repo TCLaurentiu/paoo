@@ -10,12 +10,13 @@ on access elements are moved to the beginning of the list
 */
 class StringIntHashMap{
   public:
-    StringIntHashMap();
+    StringIntHashMap(int);
     void insert(std::string key, int);
     bool exists(std::string key);
     int get(std::string key);
 
   private:
+    int size;
     int getHash(std::string);
 
 };

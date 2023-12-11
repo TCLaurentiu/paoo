@@ -3,6 +3,10 @@
 #define p 31
 #define m = 1e9 + 9
 
+StringIntHashMap::StringIntHashMap(int size) {
+  this -> size = size;
+}
+
 /*
 interprets every 4 bytes of the string as a number
 adds them up and applies modulo the size of the hashmap
