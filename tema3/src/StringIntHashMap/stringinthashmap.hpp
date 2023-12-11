@@ -15,8 +15,7 @@ class StringIntHashMap{
     bool exists(std::string key);
     int get(std::string key);
 
-  private:
     int size;
-    int getHash(std::string);
+    unsigned int getHash(std::string);
 
 };
