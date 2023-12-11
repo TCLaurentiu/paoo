@@ -12,6 +12,30 @@ StringIntHashMap map(1000);
 std::vector<std::string> words = read_file_as_word_vector("../res/mobydick.txt");
 int word_count = words.size();
 
+void count_frequencies(int thread_index) {
+  int part_size = word_count / processor_count;
+  int starting_index = part_size * thread_index;
+  
+  int ending_index;
+  // the last thread needs to deal with all the left over words
+  // even if the word count isn't a multiple of processor_count
+  if (thread_index == processor_count - 1){
+    ending_index = word_count;
+  } else {
+    ending_index = part_size * (thread_index + 1);
+  }
+
+  for (int i = starting_index; i < ending_index; i ++){
+    std::optional<int> current_freq = map.get(words[i]);
+    if (current_freq.has_value()){
+      map.insert_reorder(std::make_pair(words[i], current_freq.value() + 1));
+    } else {
+      map.insert_reorder(std::make_pair(words[i], 0));
+    }
+  }
+
+}
+
 int main()
 {
 }
