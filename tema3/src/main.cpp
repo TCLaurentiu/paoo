@@ -12,6 +12,8 @@ StringIntHashMap map(1000);
 std::vector<std::string> words = read_file_as_word_vector("../res/mobydick.txt");
 int word_count = words.size();
 
+std::mutex map_mutex;
+
 void count_frequencies(int thread_index) {
   int part_size = word_count / processor_count;
   int starting_index = part_size * thread_index;
@@ -26,6 +28,7 @@ void count_frequencies(int thread_index) {
   }
 
   for (int i = starting_index; i < ending_index; i ++){
+    std::lock_guard<std::mutex> guard(map_mutex);
     std::optional<int> current_freq = map.get(words[i]);
     if (current_freq.has_value()){
       map.insert_reorder(std::make_pair(words[i], current_freq.value() + 1));
