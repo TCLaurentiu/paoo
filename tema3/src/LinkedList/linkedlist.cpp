@@ -1,4 +1,5 @@
 #include "linkedlist.hpp"
+#include <vector>
 #include <iostream>
 
 Node::Node(std::pair<std::string, int> element) {
@@ -63,4 +64,14 @@ std::optional<int> LinkedList::remove(std::string string) {
 
   return {};
 
+}
+
+std::vector<std::string> LinkedList::first_component_to_vector() {
+  std::vector<std::string> v;
+  std::shared_ptr<Node> iter = this->head;
+  while(iter != NULL){
+    v.push_back(iter->element.first);
+    iter = iter -> next;
+  }
+  return v;
 }
