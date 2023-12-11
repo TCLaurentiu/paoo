@@ -13,7 +13,7 @@ on access elements are moved to the beginning of the list
 class StringIntHashMap{
   public:
     StringIntHashMap(int);
-    void insert(std::pair<std::string, int>);
+    void insert_reorder(std::pair<std::string, int>);
     bool exists(std::string key);
     int get(std::string key);
 
