@@ -20,6 +20,9 @@ class StringIntHashMap{
 
     int size;
     unsigned int getHash(std::string);
+    
+    std::vector<std::string> getKeys();
+
     void print();
   
   private:

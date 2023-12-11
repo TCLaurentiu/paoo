@@ -44,6 +44,15 @@ unsigned int StringIntHashMap::getHash(std::string string){
 
 }
 
+std::vector<std::string> StringIntHashMap::getKeys() {
+  std::vector<std::string> v;
+  for(int i =0;i<this->size;i++) {
+    std::vector<std::string> bucket_v = this->buckets[i].first_component_to_vector();
+    v.insert(v.end(), bucket_v.begin(), bucket_v.end());
+  }
+  return v;
+}
+
 void StringIntHashMap::print() {
   for (int i = 0;i<this->size;i++){
     std::cout << "Bucket " << i << ":\n";
