@@ -19,7 +19,7 @@ void LinkedList::insert_front(std::pair<std::string, int> element) {
 void LinkedList::print(){
   std::shared_ptr<Node> iter = this->head;
   while(iter != NULL){
-    std::cout << "String: " << iter->element.first << " and int:" << iter->element.second;
+    std::cout << "String: " << iter->element.first << " and int:" << iter->element.second << "\n";
     iter = iter->next;
   }
 }
