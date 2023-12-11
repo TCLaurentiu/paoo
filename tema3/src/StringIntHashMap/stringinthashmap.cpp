@@ -5,6 +5,7 @@
 
 StringIntHashMap::StringIntHashMap(int size) {
   this -> size = size;
+  this -> buckets = std::vector<LinkedList>(this->size, LinkedList());
 }
 
 /*

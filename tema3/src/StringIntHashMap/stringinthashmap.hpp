@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <utility>
+#include "linkedlist.hpp"
 
 /*
 a hashmap that has strings as keys and ints as values
@@ -18,5 +19,8 @@ class StringIntHashMap{
 
     int size;
     unsigned int getHash(std::string);
+  
+  private:
+    std::vector<LinkedList> buckets;
 
 };
