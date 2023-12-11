@@ -23,3 +23,33 @@ void LinkedList::print(){
     iter = iter->next;
   }
 }
+
+std::optional<int> LinkedList::remove(std::string string) {
+
+  // we walk the list keeping the current node and previous node pointers
+  std::shared_ptr<Node> iter = this->head;
+  std::shared_ptr<Node> lagging_iter = nullptr;
+  
+  int to_return;
+  while(iter != NULL){
+    if(iter->element.first == string){
+      to_return = iter->element.second;
+      // removing the first element of the list
+      if(lagging_iter == nullptr){
+        this->head = this->head->next;
+        return to_return;
+      } else {
+        // removing element in the middle of the list
+        lagging_iter->next = iter->next;
+        return to_return;
+      }
+    }
+
+    lagging_iter = iter;
+    iter = iter -> next;
+
+  }
+
+  return {};
+
+}
