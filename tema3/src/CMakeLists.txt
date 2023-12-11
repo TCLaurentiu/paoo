@@ -5,4 +5,5 @@ add_subdirectory(TextLoader)
 include_directories(TextLoader)
 
 add_executable(word_analysis main.cpp)
-target_link_libraries(word_analysis textloader)
+find_package(Threads)
+target_link_libraries(word_analysis textloader Threads::Threads)
