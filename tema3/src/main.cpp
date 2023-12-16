@@ -2,6 +2,7 @@
 #include <memory>
 #include <thread>
 #include <mutex>
+#include <barrier>
 #include "textloader.hpp"
 #include "linkedlist.hpp"
 #include "stringinthashmap.hpp"
@@ -15,7 +16,10 @@ std::unique_ptr<StringIntHashMap> map = std::make_unique<StringIntHashMap>(bucke
 std::vector<std::string> words = read_file_as_word_vector("../res/mobydick.txt");
 int word_count = words.size();
 
+std::vector<std::pair<std::string, int>> most_frequent_per_thread;
+
 std::mutex map_mutex;
+std::barrier finished_frequency_counting_barrier(processor_count);
 
 void count_frequencies(int thread_index) {
   int part_size = word_count / processor_count;
@@ -39,6 +43,29 @@ void count_frequencies(int thread_index) {
       map->insert_reorder(std::make_pair(words[i], 1));
     }
   }
+
+  finished_frequency_counting_barrier.arrive_and_wait();
+
+  int buckets_per_thread = bucket_count / processor_count;
+  int starting_bucket = buckets_per_thread * thread_index;
+  int ending_bucket = thread_index == processor_count - 1 ? bucket_count : buckets_per_thread * (thread_index + 1);
+  std::pair<std::string, int> largest_in_thread;
+  std::optional<std::pair<std::string, int>> largest_in_bucket;
+
+  for (int i=starting_bucket;i<ending_bucket;i++){
+    largest_in_bucket = map->get_largest_in_bucket(i);
+    if (largest_in_bucket.has_value()){
+      if (largest_in_bucket.value().second > largest_in_thread.second) {
+        largest_in_thread = largest_in_bucket.value();
+      }
+    }
+  }
+
+  {  
+    std::lock_guard<std::mutex> guard(map_mutex);
+    most_frequent_per_thread.push_back(largest_in_thread);
+  }
+  finished_frequency_counting_barrier.arrive_and_wait();
 
 }
 
