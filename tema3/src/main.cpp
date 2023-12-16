@@ -6,9 +6,12 @@
 #include "linkedlist.hpp"
 #include "stringinthashmap.hpp"
 
+#define bucket_count 1000
+
 const auto processor_count = std::thread::hardware_concurrency();
 
-StringIntHashMap map(1000);
+std::unique_ptr<StringIntHashMap> map = std::make_unique<StringIntHashMap>(bucket_count);
+
 std::vector<std::string> words = read_file_as_word_vector("../res/mobydick.txt");
 int word_count = words.size();
 
