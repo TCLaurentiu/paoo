@@ -81,4 +81,9 @@ int main()
     threads[i].join();
   }
 
+  std::cout << "Most common words found by each thread: \n";
+  for (auto &item : most_frequent_per_thread) {
+    std::cout << "Word " << item.first << " appeared " << item.second << " times\n"; 
+  }
+
 }
