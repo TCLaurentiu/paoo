@@ -32,11 +32,11 @@ void count_frequencies(int thread_index) {
 
   for (int i = starting_index; i < ending_index; i ++){
     std::lock_guard<std::mutex> guard(map_mutex);
-    std::optional<int> current_freq = map.get(words[i]);
+    std::optional<int> current_freq = map->get(words[i]);
     if (current_freq.has_value()){
-      map.insert_reorder(std::make_pair(words[i], current_freq.value() + 1));
+      map->insert_reorder(std::make_pair(words[i], current_freq.value() + 1));
     } else {
-      map.insert_reorder(std::make_pair(words[i], 0));
+      map->insert_reorder(std::make_pair(words[i], 1));
     }
   }
 
