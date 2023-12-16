@@ -23,6 +23,7 @@ typedef struct LinkedList {
     std::optional<int> remove(std::string string);
 
     std::vector<std::string> first_component_to_vector();
+    std::optional<std::pair<std::string, int>> get_largest();
 
     void print();
 

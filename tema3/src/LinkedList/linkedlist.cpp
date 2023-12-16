@@ -22,6 +22,26 @@ std::optional<int> LinkedList::get_second(std::string string){
   return {};
 }
 
+std::optional<std::pair<std::string, int>> LinkedList::get_largest(){
+  std::shared_ptr<Node> iter = this -> head;
+
+  if (iter == NULL) {
+    return {};
+  }
+
+  int max_int = iter -> element.second;
+  std::pair<std::string, int> max_pair = iter->element;
+
+  while (iter != NULL){
+    if (iter->element.second > max_int){
+      max_int = iter->element.second;
+      max_pair = iter->element;
+    }
+    iter = iter->next;
+  }
+  return max_pair;
+}
+
 void LinkedList::insert_front(std::pair<std::string, int> element) {
   std::shared_ptr<Node> new_node = std::make_shared<Node>(element);
   new_node -> next = this -> head;
