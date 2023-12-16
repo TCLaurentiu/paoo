@@ -53,6 +53,10 @@ std::vector<std::string> StringIntHashMap::getKeys() {
   return v;
 }
 
+std::optional<std::pair<std::string, int>> StringIntHashMap::get_largest_in_bucket(int bucket_id) {
+  return this->buckets[bucket_id].get_largest();
+}
+
 void StringIntHashMap::print() {
   for (int i = 0;i<this->size;i++){
     std::cout << "Bucket " << i << ":\n";

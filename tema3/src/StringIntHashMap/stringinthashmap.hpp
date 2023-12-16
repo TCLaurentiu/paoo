@@ -23,6 +23,8 @@ class StringIntHashMap{
     
     std::vector<std::string> getKeys();
 
+    std::optional<std::pair<std::string, int>> get_largest_in_bucket(int bucket_id);
+
     void print();
   
   private:
